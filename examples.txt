@@ -1,0 +1,6 @@
+python3 ./rugby_roster/generate_roster.py ./20230917_Morris/doylestown_a.xlsx "Doylestown U18 (Part 1)" "Morris 7's Roster (Sept 17 2023)" "./pics_doylestown/DRFC_Logo_large.png"
+
+python3 ./rugby_roster/generate_roster.py ./20230917_Morris/doylestown_b.xlsx "Doylestown U18 (Part 2)" "Morris 7's Roster (Sept 17 2023)" "./pics_doylestown/DRFC_Logo_large.png"
+
+python3 ./rugby_roster/generate_roster.py ./wcMarauders.xlsx "West Carroll U18"  "Morris 7's Roster (Sept 17 2023)" "./pics_westcarroll/logo.jpeg"
+

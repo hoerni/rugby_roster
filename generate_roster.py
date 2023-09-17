@@ -41,7 +41,6 @@ def clear_nan(cell):
 
 def genenerate_longtabu():
     geometry_options = {
-#        "margin": "2.54cm",
         "head": "60pt",
         "margin": "0.5in",
         "top": "2in",
@@ -82,29 +81,28 @@ def genenerate_longtabu():
     with first_page.create(Head("L")) as header_left:
         with header_left.create(MiniPage(width=NoEscape(r"0.49\textwidth"),
                                          pos='c')) as logo_wrapper:
-            #            logo_file = os.path.join(os.path.dirname(__file__),
-            #                         './pics/morris_rugby.png')
-            logo_file = os.path.join(os.path.dirname(__file__),sys.argv[3])
+            #logo_file = os.path.join(os.path.dirname(__file__),sys.argv[4])
+            logo_file = sys.argv[4]
             logo_wrapper.append(StandAloneGraphic(image_options="width=120px",
                                 filename=logo_file))
     with first_page.create(Head("R")) as header_right:
         with header_right.create(MiniPage(width=NoEscape(r"0.49\textwidth"),
                                          pos='c',align='r')) as logo_wrapper:
             logo_file = os.path.join(os.path.dirname(__file__),
-                                     './pics/EGRL_WithWords_bluebackground.png')
+                                     '../pics/EGRL_WithWords_bluebackground.png')
             logo_wrapper.append(StandAloneGraphic(image_options="width=120px",
                                 filename=logo_file))
     # Add document title
     with first_page.create(Head("C")) as center_header:
         with center_header.create(MiniPage(width=NoEscape(r"0.49\textwidth"),
                                  pos='c', align='c')) as title_wrapper:
-            #title_wrapper.append(LargeText(bold("Morris Girls U18 - " + str(sys.argv[2]))))
             title_wrapper.append(LargeText(bold(str(sys.argv[2]))))
             title_wrapper.append(LineBreak())
             title_wrapper.append("    ")
             title_wrapper.append(LineBreak())
             #title_wrapper.append(LargeText(bold("New York 7's Roster")))
-            title_wrapper.append(LargeText(bold("Morris 7's Roster (Sept 17 2023)")))
+            #title_wrapper.append(LargeText(bold("Morris 7's Roster (Sept 17 2023)")))
+            title_wrapper.append(LargeText(bold(str(sys.argv[3]))))
             title_wrapper.append(LineBreak())
 
     doc.preamble.append(first_page)
@@ -112,7 +110,6 @@ def genenerate_longtabu():
     doc.add_color(name="lightgray", model="gray", description="0.80")
     
     # https://jeltef.github.io/PyLaTeX/v1.2.0/examples/complex_report.html
-
     # https://stackoverflow.com/questions/65254535/xlrd-biffh-xlrderror-excel-xlsx-file-not-supported
     doc.append(VerticalSpace("1in"))
     #doc.append(LineBreak())
