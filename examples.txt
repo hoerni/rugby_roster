@@ -4,3 +4,8 @@ python3 ./rugby_roster/generate_roster.py ./20230917_Morris/doylestown_b.xlsx "D
 
 python3 ./rugby_roster/generate_roster.py ./wcMarauders.xlsx "West Carroll U18"  "Morris 7's Roster (Sept 17 2023)" "./pics_westcarroll/logo.jpeg"
 
+python3 ./rugby_roster/generate_roster.py red_roster.xlsx "Morris Girls U18 - Red" "New York 7's" ./pics/morris_rugby.png
+
+python3 ./rugby_roster/generate_roster.py black_roster.xlsx "Morris Girls U18 - Black" "New York 7's" ./pics/morris_rugby.png
+
+
