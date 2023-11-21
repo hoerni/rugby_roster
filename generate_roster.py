@@ -1,4 +1,4 @@
-from pylatex import Document, LongTable, MultiColumn, Figure, Package, NoEscape, UnsafeCommand, \
+from pylatex import Document, LongTable, LongTabularx, MultiColumn, Figure, Package, NoEscape, UnsafeCommand, \
         LineBreak, MultiRow, PageStyle, Head, MiniPage, StandAloneGraphic, LargeText, NewPage, SmallText
 from pylatex.base_classes import CommandBase, Arguments, Command
 from pylatex.utils import bold
@@ -123,7 +123,8 @@ def genenerate_longtabu():
 
 
     # Generate data table
-    with doc.create(LongTable("l l l l l l ")) as data_table:
+    with doc.create(LongTabularx("l p{1.2in} l p{1.2in} l p{1.2in} ")) as data_table:
+#    with doc.create(LongTable("l l l l l l ")) as data_table:
             for i in range(wholeRows):
                    tmp1=str(df['Position'][3*i]) + "  " + str(df['First'][i*3])
                    tmp2=str(df['Position'][3*i+1]) + "  " + str(df['First'][i*3+1])
@@ -139,9 +140,11 @@ def genenerate_longtabu():
                    data_table.add_row('',clear_nan(df['Grade'][i*3]),'',clear_nan(df['Grade'][i*3+1]),'',clear_nan(df['Grade'][i*3+2]))
                    data_table.add_row('',"GPA: " + clear_nan(df['GPA'][i*3]),'',"GPA: " + clear_nan(df['GPA'][i*3+1]),'',"GPA: " + clear_nan(df['GPA'][i*3+2]))
 #                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'',clear_nan(df['Officer'][i*3+1]),'',clear_nan(df['Officer'][i*3+2]))
-                   data_table.add_row('',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3]))), \
-                           '',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3+1]))), \
-                           '',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3+2]))), \
+                   data_table.add_row('',SmallText(clear_nan(df['Accolades'][i*3])), \
+                       '',SmallText(clear_nan(df['Accolades'][i*3+1])), \
+                       '',SmallText(clear_nan(df['Accolades'][i*3+2])), \
+#                           '',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3+1]))), \
+#                           '',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3+2]))), \
                            )
 #                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'',clear_nan(df['Accolades'][i*3+1]),'',clear_nan(df['Accolades'][i*3+2]))
                    data_table.add_row('','','','','','')
