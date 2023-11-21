@@ -43,9 +43,12 @@ def genenerate_longtabu():
     geometry_options = {
         "head": "60pt",
         "margin": "0.5in",
-        "top": "2in",
+        "top": "1in",
+#        "top": "2in",
+        "bottom": "1in",
 #        "bottom": "0.6in",
 #        "document_options": "12pt",
+#        "includeheadfoot": True
         "includeheadfoot": False
     }
     doc = Document(page_numbers=False, geometry_options=geometry_options)
