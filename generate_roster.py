@@ -41,15 +41,16 @@ def clear_nan(cell):
 
 def genenerate_longtabu():
     geometry_options = {
-        "head": "60pt",
+#        "head": "60pt",
+        "head": "2in",
         "margin": "0.5in",
-        "top": "1in",
+        "top": "0.5in",
 #        "top": "2in",
         "bottom": "1in",
 #        "bottom": "0.6in",
 #        "document_options": "12pt",
-#        "includeheadfoot": True
-        "includeheadfoot": False
+        "includeheadfoot": True
+#        "includeheadfoot": False
     }
     doc = Document(page_numbers=False, geometry_options=geometry_options)
 #    doc = Document(documentclass='extarticle',page_numbers=False, geometry_options=geometry_options)
@@ -114,7 +115,10 @@ def genenerate_longtabu():
     
     # https://jeltef.github.io/PyLaTeX/v1.2.0/examples/complex_report.html
     # https://stackoverflow.com/questions/65254535/xlrd-biffh-xlrderror-excel-xlsx-file-not-supported
-    doc.append(VerticalSpace("1in"))
+
+
+
+    #doc.append(VerticalSpace("1in"))
     #doc.append(LineBreak())
 
 
