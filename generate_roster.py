@@ -1,5 +1,5 @@
 from pylatex import Document, LongTable, MultiColumn, Figure, Package, NoEscape, UnsafeCommand, \
-        LineBreak, MultiRow, PageStyle, Head, MiniPage, StandAloneGraphic, LargeText, NewPage
+        LineBreak, MultiRow, PageStyle, Head, MiniPage, StandAloneGraphic, LargeText, NewPage, SmallText
 from pylatex.base_classes import CommandBase, Arguments, Command
 from pylatex.utils import bold
 from pylatex.basic import NewLine
@@ -137,8 +137,13 @@ def genenerate_longtabu():
                         )
                    data_table.add_row('',bold(df['Last'][i*3]),'',bold(df['Last'][i*3+1]),'',bold(df['Last'][i*3+2]))
                    data_table.add_row('',clear_nan(df['Grade'][i*3]),'',clear_nan(df['Grade'][i*3+1]),'',clear_nan(df['Grade'][i*3+2]))
-                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'',clear_nan(df['Officer'][i*3+1]),'',clear_nan(df['Officer'][i*3+2]))
-                   data_table.add_row('',clear_nan(df['Fifth'][i*3]),'',clear_nan(df['Fifth'][i*3+1]),'',clear_nan(df['Fifth'][i*3+2]))
+                   data_table.add_row('',"GPA: " + clear_nan(df['GPA'][i*3]),'',"GPA: " + clear_nan(df['GPA'][i*3+1]),'',"GPA: " + clear_nan(df['GPA'][i*3+2]))
+#                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'',clear_nan(df['Officer'][i*3+1]),'',clear_nan(df['Officer'][i*3+2]))
+                   data_table.add_row('',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3]))), \
+                           '',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3+1]))), \
+                           '',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3+2]))), \
+                           )
+#                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'',clear_nan(df['Accolades'][i*3+1]),'',clear_nan(df['Accolades'][i*3+2]))
                    data_table.add_row('','','','','','')
                    data_table.add_row('','','','','','')
                    data_table.add_row('','','','','','')
@@ -155,8 +160,9 @@ def genenerate_longtabu():
                         )
                    data_table.add_row('',bold(df['Last'][i*3]),'',bold(df['Last'][i*3+1]),'','')
                    data_table.add_row('',clear_nan(df['Grade'][i*3]),'',clear_nan(df['Grade'][i*3+1]),'','')
-                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'',clear_nan(df['Officer'][i*3+1]),'','')
-                   data_table.add_row('',clear_nan(df['Fifth'][i*3]),'',clear_nan(df['Fifth'][i*3+1]),'','')
+                   data_table.add_row('',"GPA: " + clear_nan(df['GPA'][i*3]),'',"GPA: " + clear_nan(df['GPA'][i*3+1]),'','','')
+#                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'',clear_nan(df['Officer'][i*3+1]),'','')
+                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'',clear_nan(df['Accolades'][i*3+1]),'','')
 
             elif lastRowPlayers == 1 :
                    tmp1=str(df['Position'][3*i]) + "  " + str(df['First'][i*3])
@@ -167,8 +173,9 @@ def genenerate_longtabu():
                         )
                    data_table.add_row('',bold(df['Last'][i*3]),'','','','')
                    data_table.add_row('',clear_nan(df['Grade'][i*3]),'','','','')
-                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'','','','')
-                   data_table.add_row('',clear_nan(df['Fifth'][i*3]),'','','','')
+                   data_table.add_row('',"GPA: " + clear_nan(df['GPA'][i*3]),'','','','')
+#                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'','','','')
+                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'','','','')
       
                         
 
