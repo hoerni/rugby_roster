@@ -138,12 +138,10 @@ def genenerate_longtabu():
                    data_table.add_row('',bold(df['Last'][i*3]),'',bold(df['Last'][i*3+1]),'','')
                    data_table.add_row('',clear_nan(df['Grade'][i*3]),'',clear_nan(df['Grade'][i*3+1]),'','')
                    data_table.add_row('',"GPA: " + clear_nan(df['GPA'][i*3]),'',"GPA: " + clear_nan(df['GPA'][i*3+1]),'','','')
-#                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'',clear_nan(df['Officer'][i*3+1]),'','')
                    data_table.add_row('',SmallText(clear_nan(df['Accolades'][i*3])), \
                        '',SmallText(clear_nan(df['Accolades'][i*3+1])), \
                        '','', \
                        )
-#                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'',clear_nan(df['Accolades'][i*3+1]),'','')
 
             elif lastRowPlayers == 1 :
                    tmp1=str(df['Position'][3*i]) + "  " + str(df['First'][i*3])
@@ -155,15 +153,11 @@ def genenerate_longtabu():
                    data_table.add_row('',bold(df['Last'][i*3]),'','','','')
                    data_table.add_row('',clear_nan(df['Grade'][i*3]),'','','','')
                    data_table.add_row('',"GPA: " + clear_nan(df['GPA'][i*3]),'','','','')
-#                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'','','','')
                    data_table.add_row('',SmallText(clear_nan(df['Accolades'][i*3])), \
                        '','', \
                        '','', \
                         )
-#                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'','','','')
       
-                        
-
     # https://tex.stackexchange.com/questions/533471/pylatex-create-custom-command
     # https://www.jason-french.com/blog/2012/01/17/using-figures-within-tables-in-latex/
     doc.append(NewPage())
