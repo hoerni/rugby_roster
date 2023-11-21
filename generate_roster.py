@@ -41,19 +41,13 @@ def clear_nan(cell):
 
 def genenerate_longtabu():
     geometry_options = {
-#        "head": "60pt",
         "head": "2in",
         "margin": "0.5in",
         "top": "0.5in",
-#        "top": "2in",
         "bottom": "1in",
-#        "bottom": "0.6in",
-#        "document_options": "12pt",
         "includeheadfoot": True
-#        "includeheadfoot": False
     }
     doc = Document(page_numbers=False, geometry_options=geometry_options)
-#    doc = Document(documentclass='extarticle',page_numbers=False, geometry_options=geometry_options)
     doc.packages.append(Package('graphicx'))
     doc.packages.append(Package('color'))
     new_comm = UnsafeCommand('newcommand', '\playerInfo', options=3,
@@ -63,13 +57,7 @@ def genenerate_longtabu():
         extra_arguments=r'\color{#1} #2 #3 \color{black}')
     doc.append(new_comm)
 
-#    doc.packages.append(Package('extsizes'))
-
-
-#    doc.preamble.append(Command('usepackage', 'helvet'))
     doc.preamble.append(Command('usepackage', 'bookman'))
-#    doc.preamble.append(Package('helvet'))
-#    doc.preamble.append(Command('usepackage', 'palatino'))
 
     fileName=os.path.basename(sys.argv[1])
     outputName=str(os.path.splitext(str(fileName))[0])
@@ -85,7 +73,6 @@ def genenerate_longtabu():
     with first_page.create(Head("L")) as header_left:
         with header_left.create(MiniPage(width=NoEscape(r"0.49\textwidth"),
                                          pos='c')) as logo_wrapper:
-            #logo_file = os.path.join(os.path.dirname(__file__),sys.argv[4])
             logo_file = sys.argv[4]
             logo_wrapper.append(StandAloneGraphic(image_options="width=120px",
                                 filename=logo_file))
@@ -104,8 +91,6 @@ def genenerate_longtabu():
             title_wrapper.append(LineBreak())
             title_wrapper.append("    ")
             title_wrapper.append(LineBreak())
-            #title_wrapper.append(LargeText(bold("New York 7's Roster")))
-            #title_wrapper.append(LargeText(bold("Morris 7's Roster (Sept 17 2023)")))
             title_wrapper.append(LargeText(bold(str(sys.argv[3]))))
             title_wrapper.append(LineBreak())
 
@@ -116,15 +101,8 @@ def genenerate_longtabu():
     # https://jeltef.github.io/PyLaTeX/v1.2.0/examples/complex_report.html
     # https://stackoverflow.com/questions/65254535/xlrd-biffh-xlrderror-excel-xlsx-file-not-supported
 
-
-
-    #doc.append(VerticalSpace("1in"))
-    #doc.append(LineBreak())
-
-
     # Generate data table
     with doc.create(LongTabularx("l p{1.2in} l p{1.2in} l p{1.2in} ")) as data_table:
-#    with doc.create(LongTable("l l l l l l ")) as data_table:
             for i in range(wholeRows):
                    tmp1=str(df['Position'][3*i]) + "  " + str(df['First'][i*3])
                    tmp2=str(df['Position'][3*i+1]) + "  " + str(df['First'][i*3+1])
@@ -139,14 +117,10 @@ def genenerate_longtabu():
                    data_table.add_row('',bold(df['Last'][i*3]),'',bold(df['Last'][i*3+1]),'',bold(df['Last'][i*3+2]))
                    data_table.add_row('',clear_nan(df['Grade'][i*3]),'',clear_nan(df['Grade'][i*3+1]),'',clear_nan(df['Grade'][i*3+2]))
                    data_table.add_row('',"GPA: " + clear_nan(df['GPA'][i*3]),'',"GPA: " + clear_nan(df['GPA'][i*3+1]),'',"GPA: " + clear_nan(df['GPA'][i*3+2]))
-#                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'',clear_nan(df['Officer'][i*3+1]),'',clear_nan(df['Officer'][i*3+2]))
                    data_table.add_row('',SmallText(clear_nan(df['Accolades'][i*3])), \
                        '',SmallText(clear_nan(df['Accolades'][i*3+1])), \
                        '',SmallText(clear_nan(df['Accolades'][i*3+2])), \
-#                           '',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3+1]))), \
-#                           '',MultiRow(3, data=SmallText(clear_nan(df['Accolades'][i*3+2]))), \
                            )
-#                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'',clear_nan(df['Accolades'][i*3+1]),'',clear_nan(df['Accolades'][i*3+2]))
                    data_table.add_row('','','','','','')
                    data_table.add_row('','','','','','')
                    data_table.add_row('','','','','','')
@@ -165,7 +139,11 @@ def genenerate_longtabu():
                    data_table.add_row('',clear_nan(df['Grade'][i*3]),'',clear_nan(df['Grade'][i*3+1]),'','')
                    data_table.add_row('',"GPA: " + clear_nan(df['GPA'][i*3]),'',"GPA: " + clear_nan(df['GPA'][i*3+1]),'','','')
 #                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'',clear_nan(df['Officer'][i*3+1]),'','')
-                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'',clear_nan(df['Accolades'][i*3+1]),'','')
+                   data_table.add_row('',SmallText(clear_nan(df['Accolades'][i*3])), \
+                       '',SmallText(clear_nan(df['Accolades'][i*3+1])), \
+                       '','', \
+                       )
+#                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'',clear_nan(df['Accolades'][i*3+1]),'','')
 
             elif lastRowPlayers == 1 :
                    tmp1=str(df['Position'][3*i]) + "  " + str(df['First'][i*3])
@@ -178,7 +156,11 @@ def genenerate_longtabu():
                    data_table.add_row('',clear_nan(df['Grade'][i*3]),'','','','')
                    data_table.add_row('',"GPA: " + clear_nan(df['GPA'][i*3]),'','','','')
 #                   data_table.add_row('',clear_nan(df['Officer'][i*3]),'','','','')
-                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'','','','')
+                   data_table.add_row('',SmallText(clear_nan(df['Accolades'][i*3])), \
+                       '','', \
+                       '','', \
+                        )
+#                   data_table.add_row('',clear_nan(df['Accolades'][i*3]),'','','','')
       
                         
 
