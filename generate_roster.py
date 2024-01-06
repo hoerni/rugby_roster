@@ -42,7 +42,7 @@ def clear_nan(cell):
 def genenerate_longtabu():
     geometry_options = {
         "head": "2in",
-        "margin": "0.5in",
+        "margin": "0.4in",
         "top": "0.5in",
         "bottom": "1in",
         "includeheadfoot": True
@@ -102,14 +102,14 @@ def genenerate_longtabu():
     # https://stackoverflow.com/questions/65254535/xlrd-biffh-xlrderror-excel-xlsx-file-not-supported
 
     # Generate data table
-    with doc.create(LongTabularx("l p{1.2in} l p{1.2in} l p{1.2in} ")) as data_table:
+    with doc.create(LongTabularx("l p{1.25in} l p{1.25in} l p{1.25in} ")) as data_table:
             for i in range(wholeRows):
                    tmp1=str(df['Position'][3*i]) + "  " + str(df['First'][i*3])
                    tmp2=str(df['Position'][3*i+1]) + "  " + str(df['First'][i*3+1])
                    tmp3=str(df['Position'][3*i+2]) + "  " + str(df['First'][i*3+2])
-                   pic1="'\includegraphics[width=1in]{" + picDir + str(df['pic'][i*3]) + "}"
-                   pic2="'\includegraphics[width=1in]{" + picDir + str(df['pic'][i*3+1]) + "}"
-                   pic3="'\includegraphics[width=1in]{" + picDir + str(df['pic'][i*3+2]) + "}"
+                   pic1="'\includegraphics[trim={2in 0 2in 0},clip,width=1in]{" + picDir + str(df['pic'][i*3]) + "}"
+                   pic2="'\includegraphics[trim={2in 0 2in 0},clip,width=1in]{" + picDir + str(df['pic'][i*3+1]) + "}"
+                   pic3="'\includegraphics[trim={2in 0 2in 0},clip,width=1in]{" + picDir + str(df['pic'][i*3+2]) + "}"
                    data_table.add_row(MultiRow(4, data=NoEscape(pic1)),bold(tmp1), \
                         MultiRow(4, data=NoEscape(pic2)),bold(tmp2), \
                         MultiRow(4, data=NoEscape(pic3)),bold(tmp3), \
@@ -129,8 +129,8 @@ def genenerate_longtabu():
             if lastRowPlayers == 2 :
                    tmp1=str(df['Position'][3*i]) + "  " + str(df['First'][i*3])
                    tmp2=str(df['Position'][3*i+1]) + "  " + str(df['First'][i*3+1])
-                   pic1="'\includegraphics[width=1in]{" + picDir + str(df['pic'][i*3]) + "}"
-                   pic2="'\includegraphics[width=1in]{" + picDir + str(df['pic'][i*3+1]) + "}"
+                   pic1="'\includegraphics[trim={2in 0 2in 0},clip,width=1in]{" + picDir + str(df['pic'][i*3]) + "}"
+                   pic2="'\includegraphics[trim={2in 0 2in 0},clip,width=1in]{" + picDir + str(df['pic'][i*3+1]) + "}"
                    data_table.add_row(MultiRow(4, data=NoEscape(pic1)),bold(tmp1), \
                         MultiRow(4, data=NoEscape(pic2)),bold(tmp2), \
                         '','', \
@@ -145,7 +145,7 @@ def genenerate_longtabu():
 
             elif lastRowPlayers == 1 :
                    tmp1=str(df['Position'][3*i]) + "  " + str(df['First'][i*3])
-                   pic1="'\includegraphics[width=1in]{" + picDir + str(df['pic'][i*3]) + "}"
+                   pic1="'\includegraphics[trim={2in 0 2in 0},clip,width=1in]{" + picDir + str(df['pic'][i*3]) + "}"
                    data_table.add_row(MultiRow(4, data=NoEscape(pic1)),bold(tmp1), \
                         '','', \
                         '','', \
